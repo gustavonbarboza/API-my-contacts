@@ -1,9 +1,0 @@
-docker exec -it pg bash
-
-psql -U root
-
-\l
-
-\c 'nome da base de dados'
-
-\dt
