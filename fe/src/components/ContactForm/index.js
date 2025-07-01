@@ -25,7 +25,7 @@ export default function ContactForm({ buttonLabel }) {
 
       <FormGroup>
         <Select>
-          <option value="instagrm">instagram</option>
+          <option value="instagrm">Instagram</option>
         </Select>
       </FormGroup>
 
