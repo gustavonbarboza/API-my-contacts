@@ -16,7 +16,7 @@ class ContacController {
 
     // 404: Not Found
     if (!contact) {
-      return response.status(404).json({ error: 'User not found' });
+      return response.status(404).json({ error: 'Contact not found' });
     }
 
     response.json(contact);
@@ -41,7 +41,7 @@ class ContacController {
       name, email, phone, category_id,
     });
 
-    response.json(contact);
+    response.status(201).json(contact);
   }
 
   // Editar um registro
@@ -53,7 +53,7 @@ class ContacController {
 
     const contactExists = await ContactsRepository.findById(id);
     if (!contactExists) {
-      return response.status(400).json({ error: 'User not found' });
+      return response.status(400).json({ error: 'Contact not found' });
     }
 
     if (!name) {
