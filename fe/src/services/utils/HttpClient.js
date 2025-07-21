@@ -6,11 +6,16 @@ class HttpClient {
   }
 
   async get(path) {
-    const response = await fetch(`${this.baseUrl}${path}`);
-
     await delay(500); // Tempo do Loader (teste)
 
-    return response.json();
+    const response = await fetch(`${this.baseUrl}${path}`);
+
+    // response.status >= 200 && response.status <= 299
+    if (response.ok) {
+      return response.json();
+    }
+
+    throw new Error(`${response.status} - ${response.statusText}`);
   }
 }
 
