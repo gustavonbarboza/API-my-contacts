@@ -40,7 +40,8 @@
       "import/prefer-default-export": "off",
       "react/jsx-no-bind": "off",
       "no-promise-executor-return": "off",
-      "class-methods-use-this": "off"
+      "class-methods-use-this": "off",
+      "no-console": "off"
     }
   },
   "browserslist": {
