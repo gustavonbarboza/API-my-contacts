@@ -6,7 +6,14 @@ import {
 } from 'react';
 
 import {
-  Container, InputSeachContainer, Header, ListHeader, Card, ErrorContainer, EmptyListContainer,
+  Container,
+  InputSeachContainer,
+  Header,
+  ListHeader,
+  Card,
+  ErrorContainer,
+  EmptyListContainer,
+  SearchNotFoundContainer,
 } from './styles';
 
 import arrow from '../../assets/images/icons/arrow.svg';
@@ -14,6 +21,7 @@ import edit from '../../assets/images/icons/edit.svg';
 import trash from '../../assets/images/icons/trash.svg';
 import sad from '../../assets/images/sad.svg';
 import emptyBox from '../../assets/images/empty-box.svg';
+import magnifierQuestion from '../../assets/images/magnifier-question.svg';
 
 import Loader from '../../components/Loader';
 import Button from '../../components/Button';
@@ -111,11 +119,18 @@ export default function Home() {
 
               <p>
                 Você ainda não tem nenhum contato cadastrado!
-                Clique no botão <strong>”Novo contato”</strong>
-                à cima para cadastrar o seu primeiro!
+                Clique no botão <strong>”Novo contato”</strong> à
+                cima para cadastrar o seu primeiro!
               </p>
             </EmptyListContainer>
           )}
+
+          {(contacts.length > 0 && filteredContacts < 1) && (
+            <SearchNotFoundContainer>
+              <img src={magnifierQuestion} alt="magnifier question" />
+              <span>Nenhum resultado foi encontrado para <strong>{searchTerm}</strong></span>
+            </SearchNotFoundContainer>
+          ) }
 
           {filteredContacts.length > 0 && (
             <ListHeader orderBy={orderBy}>
