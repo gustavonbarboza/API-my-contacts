@@ -25,6 +25,34 @@ class HttpClient {
 
     throw new APIError(response, body);
   }
+
+  async post(path, body) {
+    await delay(500); // Tempo do Loader (teste)
+
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+    });
+
+    const response = await fetch(`${this.baseUrl}${path}`, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers,
+    });
+
+    let responseBody = null;
+    const contentType = response.headers.get('Content-Type');
+
+    if (contentType.includes('application/json')) {
+      responseBody = await response.json();
+    }
+
+    // response.status >= 200 && response.status <= 299
+    if (response.ok) {
+      return responseBody;
+    }
+
+    throw new APIError(response, responseBody);
+  }
 }
 
 export default HttpClient;
